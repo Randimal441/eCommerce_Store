@@ -60,6 +60,6 @@ public class DataSeeder implements CommandLineRunner {
         phone.setPrice(299.99);
         phone.setCategory(clothing);
 
-        categoryRepository.saveAll(Arrays.asList(phone, laptop, jacket))
+        productRepository.saveAll(Arrays.asList(phone, laptop, jacket));
     }
 }
