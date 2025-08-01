@@ -279,15 +279,6 @@ npm run preview
    - Clear Maven cache: `./mvnw clean`
 
 
-#
-## 👨‍💻 Author
-
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/randimal-lamahewa-153483271))
-
-
-
 ---
 
 ⭐ **Star this repository if you found it helpful!**
