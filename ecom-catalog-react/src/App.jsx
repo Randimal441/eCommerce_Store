@@ -74,46 +74,58 @@ function App() {
 
   return (
     <div className='container'>
-      <h1 className='my-4'>Product Catalog</h1>
+      <div className='app-header'>
+        <h1>🛍️ Product Catalog</h1>
+      </div>
 
-      <div className='row align-items-center mb-4'>
-        <div className='col-md-3 col-sm-12 mb-12'>
-          <CategoryFilter 
-            categories={categories} 
-            onSelect={handleCategorySelect} 
-          />
-        </div>
+      <div className='filter-section'>
+        <div className='row align-items-center'>
+          <div className='col-md-3 col-sm-12 mb-3'>
+            <label htmlFor="categorySelect" className="form-label fw-bold">Category</label>
+            <div className='category-filter'>
+              <CategoryFilter 
+                categories={categories} 
+                onSelect={handleCategorySelect} 
+              />
+            </div>
+          </div>
 
-        <div className='col-md-5 col-sm-12 mb-12'>
-          <input
-          type='text'
-          className='form-control'
-          placeholder='Search Products...'
-          onChange={handleSearchChange}
-          />
-          
-        </div>
+          <div className='col-md-5 col-sm-12 mb-3'>
+            <label htmlFor="searchInput" className="form-label fw-bold">Search</label>
+            <div className='search-input'>
+              <input
+                id="searchInput"
+                type='text'
+                className='form-control'
+                placeholder='Search products by name or description...'
+                onChange={handleSearchChange}
+              />
+            </div>
+          </div>
 
-        <div className='col-md-4 col-sm-12 mb-2'>
-          <select className='form-control' onChange={handleSortChange}>
-            <option value='asc'>Sort by Price: Low to High</option>
-            <option value='desc'>Sort by Price: High to Low</option>
-          </select>
-
+          <div className='col-md-4 col-sm-12 mb-3'>
+            <label htmlFor="sortSelect" className="form-label fw-bold">Sort By</label>
+            <div className='sort-dropdown'>
+              <select id="sortSelect" className='form-control' onChange={handleSortChange}>
+                <option value='asc'>Price: Low to High</option>
+                <option value='desc'>Price: High to Low</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div>
+      <div className='product-grid'>
         {filteredAndSortedProducts.length ? (
-          //Display products
           <ProductList products={filteredAndSortedProducts}/>
         ) : (
-          <p>No Products Found</p>
+          <div className='no-products'>
+            <h3>🔍 No Products Found</h3>
+            <p>Try adjusting your search criteria or category filter</p>
+          </div>
         )}
       </div>
-
     </div>
-    
   )
 }
 
