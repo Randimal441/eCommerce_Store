@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ProductList from './ProductList.jsx'
+import CategoryFilter from './CategoryFilter.jsx'
 import './App.css'
 
 function App() {
@@ -11,12 +12,36 @@ function App() {
 
   useEffect(() => {
     fetch('http://localhost:8080/api/products')
-      .then(response => response.json())
-      .then(data => setProducts(data));
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Products fetched:', data);
+        setProducts(data);
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+        setProducts([]);
+      });
 
-      fetch('http://localhost:8080/api/products')
-      .then(response => response.json())
-      .then(data => setCategories(data));
+    fetch('http://localhost:8080/api/categories')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Categories fetched:', data);
+        setCategories(data);
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+        setCategories([]);
+      });
   }, []);
 
   const handleSearchChange = (event) => {
@@ -27,13 +52,36 @@ function App() {
     setSortOrder(event.target.value);
   }
 
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategories(categoryId ? Number(categoryId) : null);
+  }
+
+  // Filter and sort products
+  const filteredAndSortedProducts = products
+    .filter(product => {
+      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                           product.description.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = !selectedCategories || product.category?.id === selectedCategories;
+      return matchesSearch && matchesCategory;
+    })
+    .sort((a, b) => {
+      if (sortOrder === 'asc') {
+        return a.price - b.price;
+      } else {
+        return b.price - a.price;
+      }
+    });
+
   return (
     <div className='container'>
       <h1 className='my-4'>Product Catalog</h1>
 
       <div className='row align-items-center mb-4'>
         <div className='col-md-3 col-sm-12 mb-12'>
-          <p>Category Filter</p>
+          <CategoryFilter 
+            categories={categories} 
+            onSelect={handleCategorySelect} 
+          />
         </div>
 
         <div className='col-md-5 col-sm-12 mb-12'>
@@ -56,9 +104,9 @@ function App() {
       </div>
 
       <div>
-        {products.length ? (
+        {filteredAndSortedProducts.length ? (
           //Display products
-          <ProductList products={products}/>
+          <ProductList products={filteredAndSortedProducts}/>
         ) : (
           <p>No Products Found</p>
         )}
