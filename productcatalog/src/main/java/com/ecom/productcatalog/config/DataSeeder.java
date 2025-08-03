@@ -60,6 +60,20 @@ public class DataSeeder implements CommandLineRunner {
         jacket.setPrice(299.99);
         jacket.setCategory(clothing);
 
-        productRepository.saveAll(Arrays.asList(phone, laptop, jacket));
+        Product iphone = new Product();
+        iphone.setName("Apple 15 Pro max");
+        iphone.setDescription("pple iPhone 15 Pro Max smartphone. Announced Sep 2023. Features 6.7″ display, Apple A17 Pro chipset, 4441 mAh battery, 1024 GB storage, 8 GB RAM");
+        iphone.setImageUrl("https://smartmobile.lk/image/cache/catalog/Apple%20iPhone%2015%20Pro%20Max-500x500.jpg");
+        iphone.setPrice(1499.00);
+        iphone.setCategory(electronics);
+
+        Product bat = new Product();
+        bat.setName("SF Cricket Bats");
+        bat.setDescription("pple iPhone 15 Pro Max smartphone. Announced Sep 2023. Features 6.7″ display, Apple A17 Pro chipset, 4441 mAh battery, 1024 GB storage, 8 GB RAM");
+        bat.setImageUrl("https://smartmobile.lk/image/cache/catalog/Apple%20iPhone%2015%20Pro%20Max-500x500.jpg");
+        bat.setPrice(1500.00);
+        bat.setCategory(electronics);
+
+        productRepository.saveAll(Arrays.asList(phone, laptop, jacket, iphone, bat));
     }
 }
