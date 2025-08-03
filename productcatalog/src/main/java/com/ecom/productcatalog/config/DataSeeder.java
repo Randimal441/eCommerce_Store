@@ -70,7 +70,7 @@ public class DataSeeder implements CommandLineRunner {
         Product bat = new Product();
         bat.setName("SF Cricket Bat");
         bat.setDescription("Vendor: Stanford. Stanford SF Ranger Players Edition English Willow Cricket Bat. Sale price Rs. 51,000.00. Regular price Rs. 64,000.00. No reviews · -18%. ");
-        bat.setImageUrl("https://smartmobile.lk/image/cache/catalog/Apple%20iPhone%2015%20Pro%20Max-500x500.jpg");
+        bat.setImageUrl("https://www.cricketshopitaly.com/cdn/shop/files/SFTRANSFORMATION4.0EnglishWillowCricketBat_1_800x.jpg?v=1747418087");
         bat.setPrice(1500.00);
         bat.setCategory(electronics);
 
