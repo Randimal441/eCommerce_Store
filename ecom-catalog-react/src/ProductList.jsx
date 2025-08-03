@@ -10,7 +10,7 @@ const ProductList = ({ products }) => {
               alt={product.name} />
               <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
-                  <p className="card-text">{product.description}</p>
+                  <p className="card-text" style={{ color: '#4a5568' }}>{product.description}</p>
                   <p className="card-text" style={{ color: '#2563eb', fontWeight: 'bold', fontSize: '1.25rem' }}>
                     <strong>${product.price?.toFixed(2) || '0.00'}</strong>
                   </p>
