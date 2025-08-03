@@ -68,8 +68,8 @@ public class DataSeeder implements CommandLineRunner {
         iphone.setCategory(electronics);
 
         Product bat = new Product();
-        bat.setName("SF Cricket Bats");
-        bat.setDescription("pple iPhone 15 Pro Max smartphone. Announced Sep 2023. Features 6.7″ display, Apple A17 Pro chipset, 4441 mAh battery, 1024 GB storage, 8 GB RAM");
+        bat.setName("SF Cricket Bat");
+        bat.setDescription("Vendor: Stanford. Stanford SF Ranger Players Edition English Willow Cricket Bat. Sale price Rs. 51,000.00. Regular price Rs. 64,000.00. No reviews · -18%. ");
         bat.setImageUrl("https://smartmobile.lk/image/cache/catalog/Apple%20iPhone%2015%20Pro%20Max-500x500.jpg");
         bat.setPrice(1500.00);
         bat.setCategory(electronics);
